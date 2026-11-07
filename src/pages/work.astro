@@ -7,20 +7,21 @@ const description =
 ---
 
 <Base title="Selected work | Evolve Media" description={description}>
-  <header class="page-intro wrap">
-    <p class="eyebrow">Work</p>
-    <h1>Selected work</h1>
-    <p>Two businesses. The live sites are the proof.</p>
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="mono">Work</p>
+      <h1>Selected work</h1>
+      <p>Two businesses. The live sites are the proof.</p>
+    </div>
   </header>
 
   {
     stories.map((story) => (
       <article class="story wrap" id={story.id}>
-        <p class="kicker">{story.eyebrow}</p>
-        <h2>{story.client}</h2>
-        <blockquote>
-          <p>{story.line}</p>
-        </blockquote>
+        <p class="mono">
+          {story.eyebrow} · {story.client}
+        </p>
+        <h2 class="display">{story.line}</h2>
         {story.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
