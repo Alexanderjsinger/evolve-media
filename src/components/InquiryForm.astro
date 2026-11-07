@@ -1,0 +1,126 @@
+---
+import { email, needs, person } from "../data/site";
+
+interface Props {
+  heading?: string;
+  intro?: string;
+}
+
+const { heading, intro } = Astro.props;
+---
+
+<section class="section" id="inquiry">
+  <div class="wrap">
+    {heading && <h2>{heading}</h2>}
+    {intro && <p class="measure">{intro}</p>}
+    <form
+      class="form"
+      action={`https://formsubmit.co/${email}`}
+      method="POST"
+      data-inquiry
+    >
+      <input type="hidden" name="_subject" value="Evolve Media inquiry" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <div class="hp" aria-hidden="true">
+        <label>
+          Company website
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <label class="field">
+        <span>Name</span>
+        <input name="name" type="text" autocomplete="name" required />
+      </label>
+      <label class="field">
+        <span>Business</span>
+        <input name="business" type="text" autocomplete="organization" required />
+      </label>
+      <label class="field">
+        <span>Website</span>
+        <input
+          name="website"
+          type="text"
+          autocomplete="url"
+          placeholder="yoursite.com, or none yet"
+          required
+        />
+      </label>
+      <label class="field">
+        <span>What you need</span>
+        <select name="need" required>
+          <option value="">Select one</option>
+          {needs.map((need) => <option value={need}>{need}</option>)}
+        </select>
+      </label>
+      <label class="field">
+        <span>How to reach you</span>
+        <input name="reach" type="text" autocomplete="email" required />
+      </label>
+      <button class="button" type="submit">Send</button>
+      <p class="status" data-status role="status"></p>
+    </form>
+    <p class="note">
+      This note is sent to {person} so he can reply. You can also write
+      <a href={`mailto:${email}`}>{email}</a>.
+    </p>
+  </div>
+</section>
+
+<script define:vars={{ email }}>
+  const endpoint = `https://formsubmit.co/ajax/${email}`;
+
+  document.querySelectorAll("[data-inquiry]").forEach((node) => {
+    if (!(node instanceof HTMLFormElement)) return;
+    const form = node;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const status = form.querySelector("[data-status]");
+      const button = form.querySelector("button[type=submit]");
+      const data = new FormData(form);
+      if (String(data.get("_honey") || "").trim() !== "") {
+        window.location.href = "/thanks";
+        return;
+      }
+      if (button instanceof HTMLButtonElement) {
+        button.disabled = true;
+      }
+      if (status) {
+        status.classList.remove("error");
+        status.textContent = "Sending…";
+      }
+      const name = String(data.get("name") || "").trim();
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            business: data.get("business"),
+            website: data.get("website"),
+            need: data.get("need"),
+            reach: data.get("reach"),
+            _subject: `Evolve Media inquiry from ${name}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        });
+        const payload = await response.json().catch(() => ({}));
+        const okFlag = (payload as { success?: string | boolean }).success;
+        if (!response.ok || okFlag === false || okFlag === "false") {
+          throw new Error("Request failed");
+        }
+        window.location.href = "/thanks";
+      } catch {
+        if (button instanceof HTMLButtonElement) button.disabled = false;
+        if (status) {
+          status.classList.add("error");
+          status.textContent = `That didn’t send. Email ${email} and I’ll reply.`;
+        }
+      }
+    });
+  });
+</script>

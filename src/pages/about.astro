@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { person, price } from "../data/site";
+
+const description =
+  "Alexander runs Evolve Media, digital marketing for small and mid-size businesses.";
+---
+
+<Base title="Alexander | Evolve Media" description={description}>
+  <header class="page-intro wrap">
+    <p class="eyebrow">About</p>
+    <h1>{person}</h1>
+    <!-- Photo goes here when there is one. -->
+    <p>I’m Alexander. I run Evolve Media.</p>
+    <p>
+      I work with the owner, and I do the work. The client list stays small enough
+      for that to stay true.
+    </p>
+    <p>
+      The businesses are ecommerce, retail, fitness, services, and companies that
+      need a steady flow of leads. Two of them are on the
+      <a href="/work">work page</a>: Xtreme Mats and Caruso Caruso.
+    </p>
+    <p class="price">{price}</p>
+  </header>
+
+  <InquiryForm heading="Tell me about the business" intro="I read every note." />
+</Base>
