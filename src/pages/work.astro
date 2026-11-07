@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import { price, stories } from "../data/site";
+
+const description =
+  "Xtreme Mats, one brand with two audiences. Caruso Caruso, advertising and social, with one campaign at 5x ROAS.";
+---
+
+<Base title="Selected work | Evolve Media" description={description}>
+  <header class="page-intro wrap">
+    <p class="eyebrow">Work</p>
+    <h1>Selected work</h1>
+    <p>Two businesses. The live sites are the proof.</p>
+  </header>
+
+  {
+    stories.map((story) => (
+      <article class="story wrap" id={story.id}>
+        <p class="kicker">{story.eyebrow}</p>
+        <h2>{story.client}</h2>
+        <blockquote>
+          <p>{story.line}</p>
+        </blockquote>
+        {story.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <p class="links">
+          {story.links.map((link) => (
+            <a href={link.href} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </p>
+      </article>
+    ))
+  }
+
+  <section class="band">
+    <div class="wrap band-inner">
+      <p class="price">{price}</p>
+      <a class="button" href="/start">Tell me about the business</a>
+    </div>
+  </section>
+</Base>

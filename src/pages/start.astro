@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { price } from "../data/site";
+
+const description =
+  "Tell Alexander about the business. Monthly marketing starts at $1,500.";
+---
+
+<Base title="Tell me about the business | Evolve Media" description={description}>
+  <header class="page-intro wrap">
+    <p class="eyebrow">Start</p>
+    <h1>Tell me about the business</h1>
+    <p>{price}</p>
+    <p>I read every note.</p>
+  </header>
+  <InquiryForm />
+</Base>

@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import { faqs, offers, price, stories } from "../data/site";
+
+const description =
+  "Digital marketing, websites, technical setup, and practical AI for owners of small and mid-size businesses. Monthly marketing starts at $1,500.";
+---
+
+<Base
+  title="Digital marketing for small businesses | Evolve Media"
+  description={description}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">Services</p>
+    <h1>Digital marketing for small and mid-size businesses</h1>
+    <p>
+      Marketing is the work. The website, the technical setup, and the AI are how
+      that marketing holds.
+    </p>
+    <p class="price">{price}</p>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      {
+        offers.map((offer) => (
+          <article class="offer">
+            <span class="num">{offer.num}</span>
+            <div>
+              <h2>{offer.title}</h2>
+              <p>{offer.long}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="eyebrow">Proof</h2>
+      <div class="work-list">
+        {
+          stories.map((story) => (
+            <a class="work-row" href={`/work#${story.id}`}>
+              <div>
+                <p class="kicker">{story.eyebrow}</p>
+                <h3>{story.client}</h3>
+              </div>
+              <p>{story.line}</p>
+              <span class="go" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Questions owners ask</h2>
+      {
+        faqs.map((item) => (
+          <div class="faq-item">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap band-inner">
+      <p class="price">{price}</p>
+      <a class="button" href="/start">Tell me about the business</a>
+    </div>
+  </section>
+</Base>

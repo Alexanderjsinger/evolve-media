@@ -1,0 +1,21 @@
+---
+import { email, name, nav, person } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="logo">{name}</p>
+      <p class="muted">Digital marketing for small and mid-size businesses.</p>
+      <p class="fine">© {new Date().getFullYear()} {name}. {person}.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/start">Start</a>
+    </nav>
+    <p>
+      <a class="mail" href={`mailto:${email}`}>{email}</a>
+    </p>
+  </div>
+</footer>
