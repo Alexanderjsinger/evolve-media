@@ -10,12 +10,13 @@ import {
   offers,
   person,
   price,
+  stages,
   steps,
   stories,
 } from "../data/site";
 
 const description =
-  "Alexander runs digital marketing for small and mid-size businesses. Monthly marketing starts at $1,500.";
+  "Alexander runs digital marketing for small and mid-size businesses. Plan, create, publish, then evolve the work. Monthly marketing starts at $1,500.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -36,6 +37,10 @@ const jsonLd = {
     "Answer engine optimization",
   ],
 };
+
+const proof = [...stories].sort(
+  (a, b) => Number(Boolean(b.figure)) - Number(Boolean(a.figure)),
+);
 ---
 
 <Base
@@ -43,30 +48,51 @@ const jsonLd = {
   description={description}
   jsonLd={jsonLd}
 >
-  <section class="hero wrap">
-    <h1>{headline}</h1>
-    <div>
-      <p class="lede">{lede}</p>
-      <p class="price">{price}</p>
-      <a class="button" href="#inquiry">Tell me about the business</a>
+  <section class="opening">
+    <div class="wrap hero-grid">
+      <h1>{headline}</h1>
+      <div>
+        <p class="lede">{lede}</p>
+        <p class="price">{price}</p>
+        <a class="button" href="#inquiry">Tell me about the business</a>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="signal" aria-hidden="true">
+        <span class="signal-seg"><span class="signal-fill signal-fill-plan"></span></span>
+        <span class="signal-seg"><span class="signal-fill signal-fill-create"></span></span>
+        <span class="signal-seg"><span class="signal-fill signal-fill-publish"></span></span>
+        <span class="signal-seg"><span class="signal-fill signal-fill-evolve"></span></span>
+      </div>
+      <ol class="cycle">
+        {
+          stages.map((stage) => (
+            <li class={`cycle-${stage.id}`}>
+              <span class="mark" aria-hidden="true">
+                <span></span>
+              </span>
+              <p class="mono">{stage.label}</p>
+              <p>{stage.body}</p>
+            </li>
+          ))
+        }
+      </ol>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <h2 class="eyebrow">Selected work</h2>
-      <div class="work-list">
+      <h2 class="mono section-label">Selected work</h2>
+      <div class="proof">
         {
-          stories.map((story) => (
-            <a class="work-row" href={`/work#${story.id}`}>
-              <div>
-                <p class="kicker">{story.eyebrow}</p>
-                <h3>{story.client}</h3>
-              </div>
-              <p>{story.summary}</p>
-              <span class="go" aria-hidden="true">
-                →
-              </span>
+          proof.map((story) => (
+            <a class="proof-panel" href={`/work#${story.id}`}>
+              <p class="mono">{story.eyebrow}</p>
+              <p class={story.figure ? "figure" : "figure figure-line"}>
+                {story.figure || story.line}
+              </p>
+              <h3>{story.client}</h3>
+              <p>{story.figure ? story.line : story.summary}</p>
             </a>
           ))
         }
@@ -76,19 +102,12 @@ const jsonLd = {
 
   <section class="section">
     <div class="wrap">
-      <h2 class="eyebrow">What I do</h2>
-      <article class="job-lead">
-        <span class="num">{offers[0].num}</span>
-        <div>
-          <h3>{offers[0].title}</h3>
-          <p>{offers[0].short}</p>
-        </div>
-      </article>
-      <div class="job-rest">
+      <h2>What a hire includes</h2>
+      <div class="hire">
         {
-          offers.slice(1).map((offer) => (
-            <article>
-              <span class="num">{offer.num}</span>
+          offers.map((offer) => (
+            <article class="hire-row">
+              <p class="mono">{offer.stage}</p>
               <h3>{offer.title}</h3>
               <p>{offer.short}</p>
             </article>
@@ -100,7 +119,7 @@ const jsonLd = {
 
   <section class="section">
     <div class="wrap">
-      <h2 class="eyebrow">How it starts</h2>
+      <h2>How it starts</h2>
       <ol class="steps">
         {
           steps.map((step) => (
@@ -123,8 +142,5 @@ const jsonLd = {
     </div>
   </section>
 
-  <InquiryForm
-    heading="Tell me about the business"
-    intro="I read every note."
-  />
+  <InquiryForm heading="Tell me about the business" intro="I read every note." />
 </Base>

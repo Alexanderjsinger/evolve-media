@@ -10,14 +10,16 @@ const description =
   title="Digital marketing for small businesses | Evolve Media"
   description={description}
 >
-  <header class="page-intro wrap">
-    <p class="eyebrow">Services</p>
-    <h1>Digital marketing for small and mid-size businesses</h1>
-    <p>
-      Marketing is the work. The website, the technical setup, and the AI are how
-      that marketing holds.
-    </p>
-    <p class="price">{price}</p>
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="mono">Services</p>
+      <h1>Digital marketing for small and mid-size businesses</h1>
+      <p>
+        Marketing is the work. The website, the technical setup, and the AI are how
+        that marketing holds.
+      </p>
+      <p class="price">{price}</p>
+    </div>
   </header>
 
   <section class="section">
@@ -25,7 +27,7 @@ const description =
       {
         offers.map((offer) => (
           <article class="offer">
-            <span class="num">{offer.num}</span>
+            <p class="mono">{offer.stage}</p>
             <div>
               <h2>{offer.title}</h2>
               <p>{offer.long}</p>
@@ -38,19 +40,17 @@ const description =
 
   <section class="section">
     <div class="wrap">
-      <h2 class="eyebrow">Proof</h2>
-      <div class="work-list">
+      <h2 class="mono section-label">Proof</h2>
+      <div class="proof">
         {
           stories.map((story) => (
-            <a class="work-row" href={`/work#${story.id}`}>
-              <div>
-                <p class="kicker">{story.eyebrow}</p>
-                <h3>{story.client}</h3>
-              </div>
-              <p>{story.line}</p>
-              <span class="go" aria-hidden="true">
-                →
-              </span>
+            <a class="proof-panel" href={`/work#${story.id}`}>
+              <p class="mono">{story.eyebrow}</p>
+              <p class={story.figure ? "figure" : "figure figure-line"}>
+                {story.figure || story.line}
+              </p>
+              <h3>{story.client}</h3>
+              <p>{story.figure ? story.line : story.summary}</p>
             </a>
           ))
         }

@@ -10,11 +10,33 @@ export const siteUrl = "";
 export const price =
   "Monthly marketing starts at $1,500. Projects are quoted from the job.";
 
-export const headline =
-  "Digital marketing for owners who don’t have a department for it.";
+export const headline = "Plan. Create. Publish. Then evolve it.";
 
 export const lede =
-  "I’m Alexander. Through Evolve Media I run digital marketing for small and mid-size businesses, and I keep the website, the tracking, and the AI work lined up behind it.";
+  "Digital marketing for owners who don’t have a department for it. I’m Alexander. I run the marketing, the site, and the systems behind them, then I keep making the live work better.";
+
+export const stages = [
+  {
+    id: "plan",
+    label: "Plan",
+    body: "Who the buyer is, and what the work is for.",
+  },
+  {
+    id: "create",
+    label: "Create",
+    body: "The site, the campaigns, and the message.",
+  },
+  {
+    id: "publish",
+    label: "Publish",
+    body: "It goes live, with tracking, so the result can be seen.",
+  },
+  {
+    id: "evolve",
+    label: "Evolve",
+    body: "AI, and the next version of what is already in market.",
+  },
+] as const;
 
 export const bestFit =
   "Owners of businesses with about 50 people or fewer, who want a person running the marketing and will stay with it long enough for the work to compound.";
@@ -38,6 +60,7 @@ export const stories = [
       "Xtreme Golf Cart Mats is the spin-off. Custom-fit mats, sold by cart make, live on xtremegolfcartmats.com. The person shopping for a golf cart floor is a different buyer from the person protecting a kitchen.",
       "The marketing keeps those audiences separate, each with its own site and its own message, and keeps the brand effort integrated. Recognition built on one side can support the other. Each buyer lands on the product that matches them.",
     ],
+    figure: "",
     links: [
       { href: "https://xtrememats.com", label: "xtrememats.com" },
       { href: "https://xtremegolfcartmats.com", label: "xtremegolfcartmats.com" },
@@ -48,6 +71,7 @@ export const stories = [
     eyebrow: "Retail",
     client: "Caruso Caruso",
     line: "One campaign returned 5x ROAS.",
+    figure: "5x",
     summary:
       "Advertising and social for a Detroit-area apparel shop in Birmingham, in the store and online.",
     paragraphs: [
@@ -61,6 +85,7 @@ export const stories = [
 export const offers = [
   {
     num: "01",
+    stage: "Plan",
     title: "Digital marketing",
     short:
       "Advertising, social, and search, run as one effort, including the places people ask AI tools for a recommendation.",
@@ -68,6 +93,7 @@ export const offers = [
   },
   {
     num: "02",
+    stage: "Create",
     title: "Websites",
     short:
       "A site that can sell, book, or explain the business, sound enough for the marketing to land.",
@@ -75,6 +101,7 @@ export const offers = [
   },
   {
     num: "03",
+    stage: "Publish",
     title: "Technical setup",
     short:
       "Domain, email, store, analytics, and tracking, connected so a month of marketing leaves a record.",
@@ -82,6 +109,7 @@ export const offers = [
   },
   {
     num: "04",
+    stage: "Evolve",
     title: "AI in the work",
     short:
       "The business shows up when people ask AI tools for an answer, and the marketing work gets faster and more carefully optimized.",
