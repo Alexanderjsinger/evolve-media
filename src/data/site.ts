@@ -19,7 +19,7 @@ export const responseTime = "24 hours";
 export const analyticsId = "{{ALEX: analytics measurement ID}}";
 
 export const price =
-  "I work with a small list of owners. I choose who fits, and I quote each engagement for the business and the work.";
+  "I keep the client list small so the work stays personal. Each engagement is scoped for the business.";
 
 export const headlineLead = "Plan. Create. Publish. Then";
 export const headlineAccent = "keep it growing.";
@@ -34,36 +34,32 @@ export const locationLine =
   "I work with owners nationwide. The specialty is local and focused growth.";
 
 export const lede =
-  "I’m Alexander. I draw clients I want to work with, run the marketing and the site, then keep making the live work better.";
+  "I’m Alexander. I run the marketing and the site, then keep making the live work better.";
 
 export const stages = [
   {
     id: "plan",
     num: "01",
     label: "Plan",
-    body:
-      "Search, Google Ads, social, and the website start with who the buyer is, which channel is worth the effort, and what working will mean.",
+    body: "Who the buyer is, what to measure, and where to start.",
   },
   {
     id: "create",
     num: "02",
     label: "Create",
-    body:
-      "The website, the ads, and the posts become pages, campaigns, email, and social creative people can act on.",
+    body: "The site, the campaigns, and the message.",
   },
   {
     id: "publish",
     num: "03",
     label: "Publish",
-    body:
-      "Google Ads, social, and search go live, with tracking so a month leaves a record.",
+    body: "It goes live, with tracking, so we can see what happened.",
   },
   {
     id: "keep",
     num: "04",
     label: "Keep",
-    body:
-      "SEO, listings, and the live site keep improving from what the record shows, including when someone asks an AI tool who to hire.",
+    body: "The record tells us what to change next. We keep improving what is already in market.",
   },
 ] as const;
 
@@ -283,8 +279,11 @@ export const credentials = [
 
 export const headshot = "{{ALEX: headshot file}}";
 
+export const aboutBelief =
+  "I don’t take myself too seriously. I’m dead serious about results. The numbers fuel what I change, but I’m not a robot. I’m one person, with heart, focused on whether the work helps your business.";
+
 export const howHeWorks =
-  "I work with the owner, and I do the work. I choose who I take on, and the list stays small enough for that to stay true. Each engagement is scoped for the business. I don’t work on, or charge for, ways you won’t benefit.";
+  "I work with the owner, and I do the work. The client list stays small enough for that to stay true. I don’t work on, or charge for, ways you won’t benefit.";
 
 export const aboutTestimonials =
   "{{ALEX: 1 or 2 testimonials from A6, each with exact quote, full name, role, business, permission, and optional link.}}";
@@ -310,8 +309,9 @@ export const pageMeta = {
     description: `Foundation, monthly marketing, and websites for ${audience}. ${locationLine}`,
   },
   about: {
-    title: "Alexander Singer | Kindling Works",
-    description: `Alexander Singer runs Kindling Works for ${audience}. ${locationLine}`,
+    title: "About | Kindling Works",
+    description:
+      "Alexander Singer runs Kindling Works: human marketing with data behind it, for owner-led businesses. Nationwide.",
   },
   start: {
     title: "Tell me about the business | Kindling Works",

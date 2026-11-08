@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import InquiryForm from "../components/InquiryForm.astro";
 import {
+  aboutBelief,
   aboutTestimonials,
   credentials,
   fullName,
@@ -17,8 +18,9 @@ import {
 
 <Base title={pageMeta.about.title} description={pageMeta.about.description}>
   <header class="page-intro wrap">
-    <p class="eyebrow">About</p>
-    <h1>{fullName}</h1>
+    <h1 class="display about-display">About</h1>
+    <p class="about-belief">{aboutBelief}</p>
+    <h2 class="about-name">{fullName}</h2>
     <p class:list={["photo-slot", pending(headshot) && "awaiting"]}>{headshot}</p>
     <p>I’m Alexander. I run Kindling Works.</p>
     <p class:list={[pending(howHeWorks) && "awaiting"]}>{howHeWorks}</p>

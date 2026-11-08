@@ -571,6 +571,26 @@ a {
   padding: 3.25rem 0 0.5rem;
 }
 
+.about-display {
+  margin-bottom: 1rem;
+}
+
+.about-belief {
+  max-width: 36rem;
+  margin: 0 0 2.5rem;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.about-name {
+  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
 .page-intro .price {
   margin-top: 1.25rem;
 }
