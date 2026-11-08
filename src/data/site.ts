@@ -19,7 +19,7 @@ export const responseTime = "24 hours";
 export const analyticsId = "{{ALEX: analytics measurement ID}}";
 
 export const price =
-  "Monthly marketing starts at $1,500. Projects are quoted from the job.";
+  "I work with a small list of owners. I choose who fits, and I quote each engagement for the business and the work.";
 
 export const headlineLead = "Plan. Create. Publish. Then";
 export const headlineAccent = "keep it growing.";
@@ -34,32 +34,36 @@ export const locationLine =
   "I work with owners nationwide. The specialty is local and focused growth.";
 
 export const lede =
-  "I’m Alexander. I run the marketing and the site, then I keep making the live work better.";
+  "I’m Alexander. I draw clients I want to work with, run the marketing and the site, then keep making the live work better.";
 
 export const stages = [
   {
     id: "plan",
     num: "01",
     label: "Plan",
-    body: "Who the buyer is, and what the work is for.",
+    body:
+      "Search, Google Ads, social, and the website start with who the buyer is, which channel is worth the effort, and what working will mean.",
   },
   {
     id: "create",
     num: "02",
     label: "Create",
-    body: "The site, the campaigns, and the message.",
+    body:
+      "The website, the ads, and the posts become pages, campaigns, email, and social creative people can act on.",
   },
   {
     id: "publish",
     num: "03",
     label: "Publish",
-    body: "It goes live, with tracking, so the result can be seen.",
+    body:
+      "Google Ads, social, and search go live, with tracking so a month leaves a record.",
   },
   {
     id: "keep",
     num: "04",
     label: "Keep",
-    body: "AI, and the next version of what is already in market.",
+    body:
+      "SEO, listings, and the live site keep improving from what the record shows, including when someone asks an AI tool who to hire.",
   },
 ] as const;
 
@@ -139,8 +143,8 @@ export const offers = [
     who: "Owner-led businesses under 50 people that need a marketing lead without hiring one, when the site and tracking need a fix first.",
     short:
       "A project to audit and fix the site, the tracking, the listings, the offer, and lead follow-up.",
-    long: "A project with a defined end. Audit and fix the foundation marketing depends on. Work is project-based and negotiable.",
-    price: "{{ALEX: foundation price from A8}}",
+    long: "A project with a defined end. Audit and fix the foundation marketing depends on. Scoped and quoted for the business.",
+    price: "{{ALEX: foundation fee structure from A8}}",
     term: "Quoted from the job. Defined end.",
     deliverables: [
       "Website audit and the fixes it needs to sell, book, or explain the business.",
@@ -158,12 +162,12 @@ export const offers = [
     title: "Monthly marketing",
     who: "Owner-led businesses under 50 people that need a marketing lead without hiring one.",
     short:
-      "Monthly marketing starts at $1,500. Work is project-based and negotiable.",
-    long: "Ongoing marketing with Alexander when it helps the business. Work is project-based and negotiable. I don’t work on, or charge for, ways you won’t benefit.",
-    price: "Monthly marketing starts at $1,500.",
+      "SEO, Google Ads, social, and the site, run by me month to month when it helps the business.",
+    long: "Ongoing marketing with me when it helps the business. The mix follows the opportunity. I don’t work on, or charge for, ways you won’t benefit.",
+    price: "{{ALEX: monthly engagement terms from A8}}",
     term: "{{ALEX: contract term from A8}}",
     deliverables: [
-      "{{ALEX: what the $1,500 retainer includes each month, from A8}}",
+      "{{ALEX: what monthly retainer includes each month, from A8}}",
       "{{ALEX: reporting cadence from A8}}",
       "{{ALEX: whether ad spend is billed separately, from A8}}",
     ],
@@ -177,8 +181,8 @@ export const offers = [
     who: "Owner-led businesses under 50 people that need a site that can sell, book, or explain the business.",
     short:
       "Build or rebuild a site that can sell, book, or explain the business. Quoted from the job.",
-    long: "A new site or a rebuild of the one you have. Quoted per job. Work is project-based and negotiable.",
-    price: "{{ALEX: example website price or range from A8}}",
+    long: "A new site or a rebuild of the one you have. Scoped and quoted per job.",
+    price: "{{ALEX: example website fee structure from A8}}",
     term: "Quoted from the job. Defined end.",
     deliverables: [
       "{{ALEX: example website scope from A8}}",
@@ -214,7 +218,7 @@ export const steps = [
   {
     num: "03",
     title: "Then it runs",
-    body: "Monthly marketing from $1,500, or a project with a defined end.",
+    body: "Monthly marketing with me, or a project with a defined end.",
   },
 ] as const;
 
@@ -232,7 +236,7 @@ export const nextSteps = [
   {
     num: "03",
     title: "A written plan",
-    body: "Price included, before any work starts.",
+    body: "Scope and fee in writing, before any work starts.",
   },
 ] as const;
 
@@ -242,8 +246,8 @@ export const faqs = [
     a: "Owner-led businesses under 50 people that need a marketing lead without hiring one.",
   },
   {
-    q: "What does $1,500 a month cover?",
-    a: "Monthly marketing starts at $1,500. Work is project-based and negotiable. {{ALEX: what the $1,500 retainer includes, from A8}}",
+    q: "How do you charge?",
+    a: "Each engagement is tailored to the client and the work. I quote in writing before anything starts. {{ALEX: how fees and ad spend are handled, from A8}}",
   },
   {
     q: "Where does AI fit?",
@@ -264,10 +268,9 @@ export const needs = [
 ] as const;
 
 export const budgetRanges = [
-  "Under $1,500/mo",
-  "$1,500 to $3,000",
-  "$3,000+",
-  "Project only",
+  "Monthly marketing with me",
+  "A defined project",
+  "Foundation first, then monthly",
   "Not sure",
 ] as const;
 
@@ -281,7 +284,7 @@ export const credentials = [
 export const headshot = "{{ALEX: headshot file}}";
 
 export const howHeWorks =
-  "I work with the owner, and I do the work. The client list stays small enough for that to stay true. Work is project-based and negotiable. I don’t work on, or charge for, ways you won’t benefit.";
+  "I work with the owner, and I do the work. I choose who I take on, and the list stays small enough for that to stay true. Each engagement is scoped for the business. I don’t work on, or charge for, ways you won’t benefit.";
 
 export const aboutTestimonials =
   "{{ALEX: 1 or 2 testimonials from A6, each with exact quote, full name, role, business, permission, and optional link.}}";
@@ -295,7 +298,7 @@ export const privacyNote =
 export const pageMeta = {
   home: {
     title: "Kindling Works | Digital marketing for owner-led businesses",
-    description: `${positioning} ${locationLine} Monthly marketing starts at $1,500.`,
+    description: `${positioning} ${locationLine}`,
   },
   work: {
     title: "Selected work | Kindling Works",
@@ -304,7 +307,7 @@ export const pageMeta = {
   },
   services: {
     title: "Foundation, monthly marketing, and websites | Kindling Works",
-    description: `Three offers for ${audience}. ${locationLine} Monthly marketing starts at $1,500.`,
+    description: `Foundation, monthly marketing, and websites for ${audience}. ${locationLine}`,
   },
   about: {
     title: "Alexander Singer | Kindling Works",
@@ -313,7 +316,7 @@ export const pageMeta = {
   start: {
     title: "Tell me about the business | Kindling Works",
     description:
-      "Tell Alexander about the business. I reply within 24 hours. Monthly marketing starts at $1,500.",
+      "Tell Alexander about the business. I reply within 24 hours.",
   },
 } as const;
 
