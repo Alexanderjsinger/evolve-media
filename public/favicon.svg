@@ -1,4 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Kindling Works</title>
   <rect width="32" height="32" fill="#10110f"/>
-  <path fill="#ffb000" d="M9 8h14v3.1H13.2v3.6h8.2v3H13.2v3.7H23V25H9V8z"/>
+  <text
+    x="16"
+    y="13.5"
+    text-anchor="middle"
+    fill="#f3f0e8"
+    font-family="ui-sans-serif, system-ui, sans-serif"
+    font-size="6.2"
+    font-weight="700"
+  >KINDLING</text>
+  <text
+    x="16"
+    y="21.5"
+    text-anchor="middle"
+    fill="#f3f0e8"
+    font-family="ui-sans-serif, system-ui, sans-serif"
+    font-size="6.2"
+    font-weight="700"
+  >WORKS</text>
+  <rect x="9" y="25.5" width="14" height="1.5" fill="#ffb000"/>
 </svg>

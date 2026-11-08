@@ -1,6 +1,8 @@
 /** Words and facts for the site. Edit here first when refining copy. */
 
-export const name = "Evolve Media";
+export const name = "Kindling Works";
+export const descriptor =
+  "Marketing for owner-led businesses. Run by Alex Singer.";
 export const person = "Alexander";
 export const fullName = "Alexander Singer";
 
@@ -19,7 +21,7 @@ export const analyticsId = "{{ALEX: analytics measurement ID}}";
 export const price =
   "Monthly marketing starts at $1,500. Projects are quoted from the job.";
 
-export const headline = "Plan. Create. Publish. Then evolve it.";
+export const headline = "Plan. Create. Publish. Then keep it going.";
 
 export const audience =
   "owner-led businesses under 50 people that need a marketing lead without hiring one";
@@ -36,22 +38,26 @@ export const lede =
 export const stages = [
   {
     id: "plan",
+    num: "01",
     label: "Plan",
     body: "Who the buyer is, and what the work is for.",
   },
   {
     id: "create",
+    num: "02",
     label: "Create",
     body: "The site, the campaigns, and the message.",
   },
   {
     id: "publish",
+    num: "03",
     label: "Publish",
     body: "It goes live, with tracking, so the result can be seen.",
   },
   {
-    id: "evolve",
-    label: "Evolve",
+    id: "keep",
+    num: "04",
+    label: "Keep",
     body: "AI, and the next version of what is already in market.",
   },
 ] as const;
@@ -90,6 +96,10 @@ export const stories = [
       "{{ALEX: Xtreme Mats testimonial from A6, with full name, role, business, and permission.}}",
     summary:
       "Cabinet, drawer, appliance, and RV mats on one site. Golf cart mats, by cart make, on another.",
+    crop: {
+      src: "/work/xtrememats.jpg",
+      alt: "The xtrememats.com homepage",
+    },
     links: [
       { href: "https://xtrememats.com", label: "xtrememats.com" },
       { href: "https://xtremegolfcartmats.com", label: "xtremegolfcartmats.com" },
@@ -112,6 +122,10 @@ export const stories = [
       "{{ALEX: Caruso Caruso testimonial from A6, with full name, role, business, and permission.}}",
     summary:
       "Advertising and social for a Detroit-area apparel shop in Birmingham, in the store and online.",
+    crop: {
+      src: "/work/carusocaruso.jpg",
+      alt: "The carusocaruso.com homepage",
+    },
     links: [{ href: "https://carusocaruso.com", label: "carusocaruso.com" }],
   },
 ] as const;
@@ -279,24 +293,24 @@ export const privacyNote =
 
 export const pageMeta = {
   home: {
-    title: "Evolve Media | Digital marketing for owner-led businesses",
+    title: "Kindling Works | Digital marketing for owner-led businesses",
     description: `${positioning} ${locationLine} Monthly marketing starts at $1,500.`,
   },
   work: {
-    title: "Selected work | Evolve Media",
+    title: "Selected work | Kindling Works",
     description:
       "Xtreme Mats and Caruso Caruso: what I did, and what can be stated so far. For owner-led businesses under 50 people. Nationwide.",
   },
   services: {
-    title: "Foundation, monthly marketing, and websites | Evolve Media",
+    title: "Foundation, monthly marketing, and websites | Kindling Works",
     description: `Three offers for ${audience}. ${locationLine} Monthly marketing starts at $1,500.`,
   },
   about: {
-    title: "Alexander Singer | Evolve Media",
-    description: `Alexander Singer runs Evolve Media for ${audience}. ${locationLine}`,
+    title: "Alexander Singer | Kindling Works",
+    description: `Alexander Singer runs Kindling Works for ${audience}. ${locationLine}`,
   },
   start: {
-    title: "Tell me about the business | Evolve Media",
+    title: "Tell me about the business | Kindling Works",
     description:
       "Tell Alexander about the business. I reply within 24 hours. Monthly marketing starts at $1,500.",
   },

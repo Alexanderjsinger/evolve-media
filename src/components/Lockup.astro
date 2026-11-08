@@ -1,0 +1,23 @@
+---
+import { descriptor, name } from "../data/site";
+
+interface Props {
+  href?: string;
+}
+
+const { href } = Astro.props;
+---
+
+{
+  href ? (
+    <a class="lockup" href={href}>
+      <span class="lockup-name">{name}</span>
+      <span class="lockup-desc">{descriptor}</span>
+    </a>
+  ) : (
+    <p class="lockup">
+      <span class="lockup-name">{name}</span>
+      <span class="lockup-desc">{descriptor}</span>
+    </p>
+  )
+}

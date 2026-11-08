@@ -1,6 +1,6 @@
-# Evolve Media
+# Kindling Works
 
-Marketing site for Evolve Media. Alexander runs digital marketing for owner-led businesses under 50 people.
+Marketing site for Kindling Works. Alexander runs digital marketing for owner-led businesses under 50 people.
 
 ## Develop
 

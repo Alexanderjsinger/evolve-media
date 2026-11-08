@@ -14,9 +14,10 @@ interface Props {
   description: string;
   robots?: string;
   jsonLd?: Record<string, unknown>;
+  ink?: boolean;
 }
 
-const { title, description, robots, jsonLd } = Astro.props;
+const { title, description, robots, jsonLd, ink = false } = Astro.props;
 const canonical = siteUrl
   ? new URL(Astro.url.pathname, siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`).href
   : "";
@@ -56,7 +57,7 @@ const canonical = siteUrl
       )
     }
   </head>
-  <body>
+  <body class:list={[ink && "page-ink"]}>
     <a class="skip" href="#main">Skip to content</a>
     <Header />
     <main id="main">
