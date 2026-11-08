@@ -1,23 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
-import { faqs, offers, price, stories } from "../data/site";
-
-const description =
-  "Digital marketing, websites, technical setup, and practical AI for owners of small and mid-size businesses. Monthly marketing starts at $1,500.";
+import { aiHelp, faqs, notAFit, offers, pageMeta, pending, price, stories } from "../data/site";
 ---
 
-<Base
-  title="Digital marketing for small businesses | Evolve Media"
-  description={description}
->
+<Base title={pageMeta.services.title} description={pageMeta.services.description}>
   <header class="page-hero">
     <div class="wrap">
       <p class="mono">Services</p>
-      <h1>Digital marketing for small and mid-size businesses</h1>
-      <p>
-        Marketing is the work. The website, the technical setup, and the AI are how
-        that marketing holds.
-      </p>
+      <h1>Foundation, monthly marketing, and websites</h1>
+      <p>Marketing is the work. The site and the tracking are how it holds.</p>
       <p class="price">{price}</p>
     </div>
   </header>
@@ -31,10 +22,47 @@ const description =
             <div>
               <h2>{offer.title}</h2>
               <p>{offer.long}</p>
+              <p>
+                <strong>Who it’s for.</strong> {offer.who}
+              </p>
+              <p class:list={[pending(offer.price) && "awaiting"]}>
+                <strong>Price.</strong> {offer.price}
+              </p>
+              <p class:list={[pending(offer.term) && "awaiting"]}>
+                <strong>Term.</strong> {offer.term}
+              </p>
+              <h3>Deliverables</h3>
+              <ul>
+                {offer.deliverables.map((item) => (
+                  <li class:list={[pending(item) && "awaiting"]}>{item}</li>
+                ))}
+              </ul>
+              <div class="offer-extra">
+                <h3>What you’ll see</h3>
+                <p>{offer.whatYoullSee}</p>
+              </div>
             </div>
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Not included</h2>
+      <p class:list={[pending(notAFit) && "awaiting"]}>{notAFit}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>{aiHelp.title}</h2>
+      <ul class="plain-list">
+        {aiHelp.items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -45,12 +73,10 @@ const description =
         {
           stories.map((story) => (
             <a class="proof-panel" href={`/work#${story.id}`}>
-              <p class="mono">{story.eyebrow}</p>
-              <p class={story.figure ? "figure" : "figure figure-line"}>
-                {story.figure || story.line}
-              </p>
+              <p class="mono">{story.industry}</p>
+              <p class="figure figure-line">{story.title}</p>
               <h3>{story.client}</h3>
-              <p>{story.figure ? story.line : story.summary}</p>
+              <p>{story.summary}</p>
             </a>
           ))
         }
@@ -65,7 +91,7 @@ const description =
         faqs.map((item) => (
           <div class="faq-item">
             <h3>{item.q}</h3>
-            <p>{item.a}</p>
+            <p class:list={[pending(item.a) && "awaiting"]}>{item.a}</p>
           </div>
         ))
       }

@@ -4,57 +4,53 @@ import InquiryForm from "../components/InquiryForm.astro";
 import {
   bestFit,
   email,
+  firstProof,
+  fullName,
   headline,
   lede,
+  locationLine,
   name,
   offers,
-  person,
+  pageMeta,
+  positioning,
   price,
+  siteUrl,
   stages,
   steps,
   stories,
 } from "../data/site";
 
-const description =
-  "Alexander runs digital marketing for small and mid-size businesses. Plan, create, publish, then evolve the work. Monthly marketing starts at $1,500.";
-
-const jsonLd = {
+const jsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name,
-  description,
+  url: siteUrl,
   email,
   founder: {
     "@type": "Person",
-    name: person,
+    name: fullName,
     email,
   },
-  areaServed: "Worldwide",
-  knowsAbout: [
-    "Digital marketing",
-    "Websites",
-    "Technical setup",
-    "Answer engine optimization",
-  ],
+  areaServed: "United States",
+  knowsAbout: ["Digital marketing", "Websites", "Technical setup"],
 };
-
-const proof = [...stories].sort(
-  (a, b) => Number(Boolean(b.figure)) - Number(Boolean(a.figure)),
-);
 ---
 
-<Base
-  title="Evolve Media | Digital marketing for small businesses"
-  description={description}
-  jsonLd={jsonLd}
->
+<Base title={pageMeta.home.title} description={pageMeta.home.description} jsonLd={jsonLd}>
   <section class="opening">
     <div class="wrap hero-grid">
-      <h1>{headline}</h1>
+      <div>
+        <p class="positioning">{positioning}</p>
+        <h1>{headline}</h1>
+      </div>
       <div>
         <p class="lede">{lede}</p>
+        <p class="lede">{locationLine}</p>
         <p class="price">{price}</p>
-        <a class="button" href="#inquiry">Tell me about the business</a>
+        <div class="hero-actions">
+          <a class="button" href="#inquiry">Tell me about the business</a>
+          <a class="text-link" href="/work">See the work</a>
+        </div>
       </div>
     </div>
     <div class="wrap">
@@ -77,6 +73,10 @@ const proof = [...stories].sort(
           ))
         }
       </ol>
+      <aside class="proof-strip">
+        <p class="mono">Proof</p>
+        <p class="awaiting awaiting-dark">{firstProof}</p>
+      </aside>
     </div>
   </section>
 
@@ -85,14 +85,12 @@ const proof = [...stories].sort(
       <h2 class="mono section-label">Selected work</h2>
       <div class="proof">
         {
-          proof.map((story) => (
+          stories.map((story) => (
             <a class="proof-panel" href={`/work#${story.id}`}>
-              <p class="mono">{story.eyebrow}</p>
-              <p class={story.figure ? "figure" : "figure figure-line"}>
-                {story.figure || story.line}
-              </p>
+              <p class="mono">{story.industry}</p>
+              <p class="figure figure-line">{story.title}</p>
               <h3>{story.client}</h3>
-              <p>{story.figure ? story.line : story.summary}</p>
+              <p>{story.summary}</p>
             </a>
           ))
         }

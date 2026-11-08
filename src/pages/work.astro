@@ -1,17 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
-import { price, stories } from "../data/site";
-
-const description =
-  "Xtreme Mats, one brand with two audiences. Caruso Caruso, advertising and social, with one campaign at 5x ROAS.";
+import { pageMeta, pending, price, stories, workIntro } from "../data/site";
 ---
 
-<Base title="Selected work | Evolve Media" description={description}>
+<Base title={pageMeta.work.title} description={pageMeta.work.description}>
   <header class="page-hero">
     <div class="wrap">
       <p class="mono">Work</p>
       <h1>Selected work</h1>
-      <p>Two businesses. The live sites are the proof.</p>
+      <p>{workIntro}</p>
     </div>
   </header>
 
@@ -19,12 +16,37 @@ const description =
     stories.map((story) => (
       <article class="story wrap" id={story.id}>
         <p class="mono">
-          {story.eyebrow} · {story.client}
+          {story.years
+            ? `${story.client} · ${story.industry} · ${story.years}`
+            : `${story.client} · ${story.industry}`}
         </p>
-        <h2 class="display">{story.line}</h2>
-        {story.paragraphs.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))}
+        <h2 class="display">{story.title}</h2>
+        <div class="case-meta">
+          <div>
+            <h3>My role</h3>
+            <p>{story.role}</p>
+          </div>
+          <div>
+            <h3>{story.situationLabel}</h3>
+            <p>{story.situation}</p>
+          </div>
+          <div>
+            <h3>What I did</h3>
+            <ul>
+              {story.actions.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>Result</h3>
+            <p class:list={[pending(story.result) && "awaiting"]}>{story.result}</p>
+          </div>
+          <div>
+            <h3>Quote</h3>
+            <p class:list={[pending(story.quote) && "awaiting"]}>{story.quote}</p>
+          </div>
+        </div>
         <p class="links">
           {story.links.map((link) => (
             <a href={link.href} target="_blank" rel="noopener noreferrer">

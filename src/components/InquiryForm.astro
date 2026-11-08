@@ -1,5 +1,12 @@
 ---
-import { email, needs, person } from "../data/site";
+import {
+  budgetRanges,
+  email,
+  needs,
+  person,
+  privacyNote,
+  siteUrl,
+} from "../data/site";
 
 interface Props {
   heading?: string;
@@ -7,6 +14,7 @@ interface Props {
 }
 
 const { heading, intro } = Astro.props;
+const thanksUrl = siteUrl ? `${siteUrl}/thanks/` : "/thanks/";
 ---
 
 <section class="section" id="inquiry">
@@ -22,6 +30,7 @@ const { heading, intro } = Astro.props;
       <input type="hidden" name="_subject" value="Evolve Media inquiry" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value={thanksUrl} />
       <div class="hp" aria-hidden="true">
         <label>
           Company website
@@ -37,25 +46,35 @@ const { heading, intro } = Astro.props;
         <input name="business" type="text" autocomplete="organization" required />
       </label>
       <label class="field">
-        <span>Website</span>
+        <span>How to reach you</span>
+        <input name="reach" type="text" autocomplete="email" required />
+      </label>
+      <label class="field">
+        <span>Website (optional)</span>
         <input
           name="website"
           type="text"
           autocomplete="url"
           placeholder="yoursite.com, or none yet"
-          required
         />
       </label>
       <label class="field">
-        <span>What you need</span>
-        <select name="need" required>
+        <span>What you need (optional)</span>
+        <select name="need">
           <option value="">Select one</option>
           {needs.map((need) => <option value={need}>{need}</option>)}
         </select>
       </label>
       <label class="field">
-        <span>How to reach you</span>
-        <input name="reach" type="text" autocomplete="email" required />
+        <span>What would a good result look like in 90 days? (optional)</span>
+        <textarea name="result90" rows="3"></textarea>
+      </label>
+      <label class="field">
+        <span>Budget (optional)</span>
+        <select name="budget">
+          <option value="">Select one</option>
+          {budgetRanges.map((range) => <option value={range}>{range}</option>)}
+        </select>
       </label>
       <button class="button" type="submit">Send</button>
       <p class="status" data-status role="status"></p>
@@ -64,11 +83,20 @@ const { heading, intro } = Astro.props;
       This note is sent to {person} so he can reply. You can also write
       <a href={`mailto:${email}`}>{email}</a>.
     </p>
+    <p class="note">{privacyNote}</p>
   </div>
 </section>
 
 <script define:vars={{ email }}>
   const endpoint = `https://formsubmit.co/ajax/${email}`;
+
+  const trackSubmit = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "inquiry_submit" });
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", { method: "inquiry_form" });
+    }
+  };
 
   document.querySelectorAll("[data-inquiry]").forEach((node) => {
     if (!(node instanceof HTMLFormElement)) return;
@@ -103,16 +131,19 @@ const { heading, intro } = Astro.props;
             website: data.get("website"),
             need: data.get("need"),
             reach: data.get("reach"),
+            result90: data.get("result90"),
+            budget: data.get("budget"),
             _subject: `Evolve Media inquiry from ${name}`,
             _template: "table",
             _captcha: "false",
           }),
         });
         const payload = await response.json().catch(() => ({}));
-        const okFlag = (payload as { success?: string | boolean }).success;
+        const okFlag = payload.success;
         if (!response.ok || okFlag === false || okFlag === "false") {
           throw new Error("Request failed");
         }
+        trackSubmit();
         window.location.href = "/thanks";
       } catch {
         if (button instanceof HTMLButtonElement) button.disabled = false;

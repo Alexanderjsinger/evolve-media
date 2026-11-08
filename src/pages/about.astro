@@ -1,27 +1,51 @@
 ---
 import Base from "../layouts/Base.astro";
 import InquiryForm from "../components/InquiryForm.astro";
-import { person, price } from "../data/site";
-
-const description =
-  "Alexander runs Evolve Media, digital marketing for small and mid-size businesses.";
+import {
+  aboutTestimonials,
+  credentials,
+  fullName,
+  headshot,
+  howHeWorks,
+  linkedInIsLive,
+  linkedInUrl,
+  pageMeta,
+  pending,
+  price,
+} from "../data/site";
 ---
 
-<Base title="Alexander | Evolve Media" description={description}>
+<Base title={pageMeta.about.title} description={pageMeta.about.description}>
   <header class="page-intro wrap">
     <p class="eyebrow">About</p>
-    <h1>{person}</h1>
-    <!-- Photo goes here when there is one. -->
+    <h1>{fullName}</h1>
+    <p class:list={["photo-slot", pending(headshot) && "awaiting"]}>{headshot}</p>
     <p>I’m Alexander. I run Evolve Media.</p>
+    <p class:list={[pending(howHeWorks) && "awaiting"]}>{howHeWorks}</p>
+    <ul class="plain-list">
+      {
+        credentials.map((line) => (
+          <li class:list={[pending(line) && "awaiting"]}>{line}</li>
+        ))
+      }
+    </ul>
     <p>
-      I work with the owner, and I do the work. The client list stays small enough
-      for that to stay true.
+      {
+        linkedInIsLive ? (
+          <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        ) : (
+          <span class="awaiting">{linkedInUrl}</span>
+        )
+      }
     </p>
     <p>
-      The businesses are ecommerce, retail, fitness, services, and companies that
-      need a steady flow of leads. Two of them are on the
-      <a href="/work">work page</a>: Xtreme Mats and Caruso Caruso.
+      Two businesses are on the <a href="/work">work page</a>: Xtreme Mats and Caruso
+      Caruso.
     </p>
+    <h2>What clients say</h2>
+    <p class="awaiting">{aboutTestimonials}</p>
     <p class="price">{price}</p>
   </header>
 

@@ -224,8 +224,27 @@ a {
   font-weight: 700;
 }
 
-.hero-grid .button {
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.35rem;
   margin-top: 1.4rem;
+}
+
+.text-link {
+  color: var(--signal);
+  font-weight: 700;
+}
+
+.positioning {
+  margin: 0 0 1rem;
+  max-width: 28rem;
+  color: var(--signal);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
 }
 
 .signal {
@@ -554,7 +573,8 @@ a {
 }
 
 input,
-select {
+select,
+textarea {
   width: 100%;
   font: inherit;
   color: inherit;
@@ -566,14 +586,79 @@ select {
   min-height: 2.75rem;
 }
 
+textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
 select {
   cursor: pointer;
 }
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   outline: none;
   border-bottom-color: var(--signal);
+}
+
+.awaiting {
+  background: var(--paper-2);
+  border-left: 3px solid var(--signal);
+  padding: 0.65rem 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.awaiting-dark {
+  background: #1c1c18;
+  color: var(--dim);
+}
+
+.proof-strip {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-dark);
+  max-width: 42rem;
+}
+
+.photo-slot {
+  max-width: 16rem;
+  min-height: 12rem;
+  display: grid;
+  place-items: center;
+  margin: 1.25rem 0;
+}
+
+.case-meta {
+  display: grid;
+  gap: 1rem;
+  max-width: 42rem;
+  margin: 1.25rem 0 0;
+}
+
+.case-meta h3 {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.case-meta ul,
+.plain-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1.2rem;
+  max-width: 42rem;
+}
+
+.offer-extra {
+  margin-top: 1rem;
+  max-width: 42rem;
+}
+
+.offer-extra h3 {
+  font-size: 1.05rem;
 }
 
 .hp {
