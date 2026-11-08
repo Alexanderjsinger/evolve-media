@@ -1,18 +1,33 @@
 ---
 import Base from "../layouts/Base.astro";
 import InquiryForm from "../components/InquiryForm.astro";
-import { price } from "../data/site";
-
-const description =
-  "Tell Alexander about the business. Monthly marketing starts at $1,500.";
+import { nextSteps, pageMeta, price } from "../data/site";
 ---
 
-<Base title="Tell me about the business | Evolve Media" description={description}>
+<Base title={pageMeta.start.title} description={pageMeta.start.description}>
   <header class="page-intro wrap">
     <p class="eyebrow">Start</p>
     <h1>Tell me about the business</h1>
     <p>{price}</p>
     <p>I read every note.</p>
   </header>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What happens next</h2>
+      <ol class="steps">
+        {
+          nextSteps.map((step) => (
+            <li>
+              <span class="num">{step.num}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
   <InquiryForm />
 </Base>
