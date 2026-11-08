@@ -22,7 +22,7 @@ export const price =
   "Monthly marketing starts at $1,500. Projects are quoted from the job.";
 
 export const headlineLead = "Plan. Create. Publish. Then";
-export const headlineAccent = "keep it going.";
+export const headlineAccent = "keep it growing.";
 
 export const audience =
   "owner-led businesses under 50 people that need a marketing lead without hiring one";
