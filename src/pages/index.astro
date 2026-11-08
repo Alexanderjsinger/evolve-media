@@ -42,8 +42,10 @@ const jsonLd: Record<string, unknown> = {
   <section class="opening">
     <div class="wrap hero-grid hero-fade">
       <div>
-        <h1>
-          {headlineLead} <span class="headline-accent">{headlineAccent}</span>
+        <h1 class="process-headline">
+          {headlineLead}
+          <br aria-hidden="true" />
+          <span class="headline-accent">{headlineAccent}</span>
         </h1>
       </div>
       <div>
@@ -77,27 +79,7 @@ const jsonLd: Record<string, unknown> = {
         }
       </ol>
       {
-        pending(firstProof) ? (
-          <aside class="hero-proof-preview" aria-labelledby="hero-proof-label">
-            <p class="mono" id="hero-proof-label">
-              Live sites
-            </p>
-            <div class="hero-proof-crops">
-              {
-                stories.map((story) => (
-                  <a class="hero-proof-link frame" href={`/work#${story.id}`}>
-                    <WorkCrop
-                      id={story.id}
-                      src={story.crop.src}
-                      alt={story.crop.alt}
-                    />
-                    <span class="hero-proof-name">{story.client}</span>
-                  </a>
-                ))
-              }
-            </div>
-          </aside>
-        ) : (
+        !pending(firstProof) && (
           <aside class="proof-strip">
             <p class="mono">Proof</p>
             <p class="proof-quote">{firstProof}</p>
