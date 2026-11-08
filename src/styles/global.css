@@ -236,7 +236,8 @@ a {
   flex-direction: column;
   justify-content: space-between;
   padding: 5.5rem 0 3.5rem;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .opening::before {
@@ -269,12 +270,16 @@ a {
   }
 }
 
-.opening h1 {
+.opening .process-headline {
   font-size: clamp(3.8rem, 10.5vw, 8.8rem);
+  line-height: 1.02;
+  text-wrap: pretty;
+  overflow: visible;
 }
 
 .opening .headline-accent {
   color: var(--signal);
+  display: inline;
 }
 
 .lede {
@@ -405,46 +410,6 @@ a {
 
 .crop-img--caruso-caruso {
   object-position: center 22%;
-}
-
-.hero-proof-preview {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line-dark);
-  max-width: 42rem;
-}
-
-.hero-proof-crops {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-  margin-top: 0.85rem;
-}
-
-.hero-proof-link {
-  display: grid;
-  gap: 0.45rem;
-  text-decoration: none;
-  color: var(--paper);
-  transition: transform var(--ease);
-}
-
-.hero-proof-link:hover,
-.hero-proof-link:focus-visible {
-  transform: translateY(-3px);
-}
-
-.hero-proof-link .work-crop {
-  aspect-ratio: 16 / 11;
-}
-
-.hero-proof-name {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dim);
 }
 
 .proof-quote {
@@ -922,8 +887,9 @@ textarea:focus {
     padding: 2.5rem 0 2.25rem;
   }
 
-  .opening h1 {
+  .opening .process-headline {
     font-size: clamp(2.6rem, 14vw, 4.2rem);
+    line-height: 1.05;
   }
 
   .proof-copy {
@@ -943,9 +909,6 @@ textarea:focus {
     max-width: 16rem;
   }
 
-  .hero-proof-crops {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
