@@ -244,7 +244,7 @@ a {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.08;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
 }
 
@@ -273,6 +273,10 @@ a {
   font-size: clamp(3.8rem, 10.5vw, 8.8rem);
 }
 
+.opening .headline-accent {
+  color: var(--signal);
+}
+
 .lede {
   margin: 0;
   max-width: 36rem;
@@ -293,16 +297,6 @@ a {
   align-items: center;
   gap: 0.85rem 1.35rem;
   margin-top: 1.4rem;
-}
-
-.positioning {
-  margin: 0 0 1.35rem;
-  max-width: 28rem;
-  color: var(--dim);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.25;
 }
 
 .signal {
@@ -388,18 +382,82 @@ a {
   transform: translateY(-5px);
 }
 
-.proof-crop {
+.work-crop {
   overflow: hidden;
   aspect-ratio: 16 / 10;
+}
+
+.proof-panel .work-crop {
   border-bottom: 1px solid var(--ink);
 }
 
-.proof-crop img {
+.crop-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
+}
+
+.crop-img--xtreme-mats {
+  object-position: 12% top;
+}
+
+.crop-img--caruso-caruso {
+  object-position: center 22%;
+}
+
+.hero-proof-preview {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-dark);
+  max-width: 42rem;
+}
+
+.hero-proof-crops {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.hero-proof-link {
+  display: grid;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: var(--paper);
+  transition: transform var(--ease);
+}
+
+.hero-proof-link:hover,
+.hero-proof-link:focus-visible {
+  transform: translateY(-3px);
+}
+
+.hero-proof-link .work-crop {
+  aspect-ratio: 16 / 11;
+}
+
+.hero-proof-name {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.proof-quote {
+  margin: 0.35rem 0 0;
+  max-width: 42rem;
+  color: var(--paper);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.story .work-crop {
+  margin: 0 0 1.5rem;
+  max-width: 48rem;
 }
 
 .proof-copy {
@@ -832,6 +890,12 @@ textarea:focus {
 
 .page-ink .proof-panel {
   color: var(--ink);
+  border-color: var(--line);
+}
+
+.page-ink .proof-panel.frame::before,
+.page-ink .proof-panel.frame::after {
+  opacity: 1;
 }
 
 .page-ink .band {
@@ -877,6 +941,10 @@ textarea:focus {
 
   .lockup {
     max-width: 16rem;
+  }
+
+  .hero-proof-crops {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import WorkCrop from "../components/WorkCrop.astro";
 import { aiHelp, faqs, notAFit, offers, pageMeta, pending, price, stories } from "../data/site";
 ---
 
@@ -73,9 +74,11 @@ import { aiHelp, faqs, notAFit, offers, pageMeta, pending, price, stories } from
         {
           stories.map((story) => (
             <a class="proof-panel frame" href={`/work#${story.id}`}>
-              <div class="proof-crop">
-                <img src={story.crop.src} alt={story.crop.alt} width="1440" height="900" />
-              </div>
+              <WorkCrop
+                id={story.id}
+                src={story.crop.src}
+                alt={story.crop.alt}
+              />
               <div class="proof-copy">
                 <p class="mono">{story.industry}</p>
                 <h3>{story.client}</h3>

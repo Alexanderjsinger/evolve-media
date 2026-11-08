@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import WorkCrop from "../components/WorkCrop.astro";
 import { pageMeta, pending, price, stories, workIntro } from "../data/site";
 ---
 
@@ -21,6 +22,12 @@ import { pageMeta, pending, price, stories, workIntro } from "../data/site";
             : `${story.client} · ${story.industry}`}
         </p>
         <h2 class="display">{story.title}</h2>
+        <WorkCrop
+          id={story.id}
+          src={story.crop.src}
+          alt={story.crop.alt}
+          framed
+        />
         <div class="case-meta">
           <div>
             <h3>My role</h3>
