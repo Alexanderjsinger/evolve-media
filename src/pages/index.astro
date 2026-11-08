@@ -1,18 +1,20 @@
 ---
 import Base from "../layouts/Base.astro";
 import InquiryForm from "../components/InquiryForm.astro";
+import WorkCrop from "../components/WorkCrop.astro";
 import {
   bestFit,
   email,
   firstProof,
   fullName,
-  headline,
+  headlineAccent,
+  headlineLead,
   lede,
   locationLine,
   name,
   offers,
   pageMeta,
-  positioning,
+  pending,
   price,
   siteUrl,
   stages,
@@ -40,8 +42,9 @@ const jsonLd: Record<string, unknown> = {
   <section class="opening">
     <div class="wrap hero-grid hero-fade">
       <div>
-        <p class="positioning">{positioning}</p>
-        <h1>{headline}</h1>
+        <h1>
+          {headlineLead} <span class="headline-accent">{headlineAccent}</span>
+        </h1>
       </div>
       <div>
         <p class="lede">{lede}</p>
@@ -73,10 +76,34 @@ const jsonLd: Record<string, unknown> = {
           ))
         }
       </ol>
-      <aside class="proof-strip">
-        <p class="mono">Proof</p>
-        <p class="awaiting awaiting-dark">{firstProof}</p>
-      </aside>
+      {
+        pending(firstProof) ? (
+          <aside class="hero-proof-preview" aria-labelledby="hero-proof-label">
+            <p class="mono" id="hero-proof-label">
+              Live sites
+            </p>
+            <div class="hero-proof-crops">
+              {
+                stories.map((story) => (
+                  <a class="hero-proof-link frame" href={`/work#${story.id}`}>
+                    <WorkCrop
+                      id={story.id}
+                      src={story.crop.src}
+                      alt={story.crop.alt}
+                    />
+                    <span class="hero-proof-name">{story.client}</span>
+                  </a>
+                ))
+              }
+            </div>
+          </aside>
+        ) : (
+          <aside class="proof-strip">
+            <p class="mono">Proof</p>
+            <p class="proof-quote">{firstProof}</p>
+          </aside>
+        )
+      }
     </div>
   </section>
 
@@ -87,9 +114,11 @@ const jsonLd: Record<string, unknown> = {
         {
           stories.map((story) => (
             <a class="proof-panel frame" href={`/work#${story.id}`}>
-              <div class="proof-crop">
-                <img src={story.crop.src} alt={story.crop.alt} width="1440" height="900" />
-              </div>
+              <WorkCrop
+                id={story.id}
+                src={story.crop.src}
+                alt={story.crop.alt}
+              />
               <div class="proof-copy">
                 <p class="mono">{story.industry}</p>
                 <h3>{story.client}</h3>

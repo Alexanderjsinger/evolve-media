@@ -1,0 +1,21 @@
+---
+interface Props {
+  id: string;
+  src: string;
+  alt: string;
+  framed?: boolean;
+}
+
+const { id, src, alt, framed = false } = Astro.props;
+---
+
+<div class:list={["work-crop", framed && "frame"]}>
+  <img
+    class={`crop-img crop-img--${id}`}
+    src={src}
+    alt={alt}
+    width="1440"
+    height="900"
+    loading="lazy"
+  />
+</div>
