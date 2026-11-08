@@ -11,7 +11,8 @@
   --sans: "Schibsted Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --wrap: 72rem;
-  --header: 4.25rem;
+  --header: 5.75rem;
+  --ease: 200ms ease;
   color-scheme: light;
 }
 
@@ -116,6 +117,30 @@ a {
   text-transform: uppercase;
 }
 
+.lockup {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--paper);
+  text-decoration: none;
+  max-width: 22rem;
+  margin: 0;
+}
+
+.lockup-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.lockup-desc {
+  color: var(--dim);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -135,15 +160,6 @@ a {
   padding-block: 0.75rem;
 }
 
-.logo {
-  color: var(--signal);
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  text-decoration: none;
-  line-height: 1;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -155,18 +171,30 @@ a {
   color: var(--paper);
   text-decoration: none;
   font-weight: 500;
+  transition: opacity var(--ease);
 }
 
 .nav a:hover,
 .nav a[aria-current="page"] {
-  color: var(--signal);
+  opacity: 0.7;
+}
+
+.nav .button {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.nav .button:hover,
+.nav .button[aria-current="page"] {
+  color: var(--ink);
+  opacity: 0.88;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--signal);
+  background: var(--paper);
   color: var(--ink);
   text-decoration: none;
   border: 0;
@@ -175,12 +203,18 @@ a {
   font-weight: 800;
   letter-spacing: -0.02em;
   padding: 0.85rem 1.15rem;
+  transition: opacity var(--ease), transform var(--ease);
 }
 
 .button:hover,
 .button:focus-visible {
-  background: var(--signal-2);
-  color: var(--ink);
+  opacity: 0.88;
+}
+
+.section .button,
+.page-intro .button {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .nav-cta {
@@ -194,20 +228,49 @@ a {
 }
 
 .opening {
+  position: relative;
   background: var(--ink);
   color: var(--paper);
-  padding: 3.25rem 0 3rem;
+  min-height: calc(100svh - var(--header));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5.5rem 0 3.5rem;
+  overflow: hidden;
+}
+
+.opening::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
 }
 
 .hero-grid {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.75fr);
-  gap: 2rem 3.5rem;
+  gap: 3.5rem 4rem;
   align-items: end;
 }
 
+.hero-fade {
+  animation: fade-in 1.15s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .opening h1 {
-  font-size: clamp(3.1rem, 7.4vw, 6.4rem);
+  font-size: clamp(3.8rem, 10.5vw, 8.8rem);
 }
 
 .lede {
@@ -220,7 +283,7 @@ a {
 .price {
   margin: 1.15rem 0 0;
   padding-left: 0.85rem;
-  border-left: 3px solid var(--signal);
+  border-left: 2px solid var(--signal);
   font-weight: 700;
 }
 
@@ -232,15 +295,10 @@ a {
   margin-top: 1.4rem;
 }
 
-.text-link {
-  color: var(--signal);
-  font-weight: 700;
-}
-
 .positioning {
-  margin: 0 0 1rem;
+  margin: 0 0 1.35rem;
   max-width: 28rem;
-  color: var(--signal);
+  color: var(--dim);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -248,56 +306,45 @@ a {
 }
 
 .signal {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.45rem;
-  margin-top: 2.75rem;
+  margin-top: 4rem;
 }
 
 .signal-seg {
-  height: 0.55rem;
+  height: 0.35rem;
   border: 1px solid var(--signal);
 }
 
 .signal-fill {
   display: block;
   height: 100%;
-  width: 0;
   background: var(--signal);
 }
 
+.signal-fill-plan {
+  width: 0;
+}
+
 .signal-fill-create {
-  animation: fill-half 0.45s 0.15s ease forwards;
+  width: 50%;
 }
 
-.signal-fill-publish {
-  animation: fill-full 0.45s 0.4s ease forwards;
-}
-
-.signal-fill-evolve {
-  animation: fill-full 0.45s 0.65s ease forwards;
-}
-
-@keyframes fill-half {
-  to {
-    width: 50%;
-  }
-}
-
-@keyframes fill-full {
-  to {
-    width: 100%;
-  }
+.signal-fill-publish,
+.signal-fill-keep {
+  width: 100%;
 }
 
 .cycle {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.25rem 1.5rem;
   list-style: none;
-  margin: 1.75rem 0 0;
+  margin: 1.35rem 0 0;
   padding: 1.5rem 0 0;
-  border-top: 1px solid var(--line-dark);
 }
 
 .cycle p:last-child {
@@ -305,34 +352,10 @@ a {
   color: var(--dim);
 }
 
-.mark {
-  display: block;
-  height: 0.55rem;
-  margin-bottom: 0.85rem;
-  border: 1px solid var(--signal);
-}
-
-.mark span {
-  display: block;
-  height: 100%;
-  background: var(--signal);
-}
-
-.cycle-plan .mark span {
-  width: 0;
-}
-
-.cycle-create .mark span {
-  width: 50%;
-}
-
-.cycle-publish .mark span,
-.cycle-evolve .mark span {
-  width: 100%;
-}
-
-.cycle-evolve .mono {
-  color: var(--signal);
+.stage-num {
+  display: inline-block;
+  margin-right: 0.55rem;
+  color: var(--dim);
 }
 
 .section {
@@ -348,28 +371,42 @@ a {
 .proof {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .proof-panel {
   display: flex;
   flex-direction: column;
-  min-height: 18rem;
-  padding: 1.35rem 1.35rem 1.5rem;
-  border: 1px solid var(--ink);
   text-decoration: none;
   color: inherit;
+  background: var(--paper);
+  transition: transform var(--ease);
 }
 
 .proof-panel:hover,
 .proof-panel:focus-visible {
-  background: var(--ink);
-  color: var(--paper);
+  transform: translateY(-5px);
 }
 
-.proof-panel:hover .figure,
-.proof-panel:focus-visible .figure {
-  color: var(--signal);
+.proof-crop {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-bottom: 1px solid var(--ink);
+}
+
+.proof-crop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.proof-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1.2rem 1.4rem;
+  min-height: 12rem;
 }
 
 .figure {
@@ -381,23 +418,46 @@ a {
 }
 
 .figure-line {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
   line-height: 0.95;
-  max-width: 12ch;
+  max-width: 16ch;
 }
 
-.proof-panel h3 {
-  margin-top: auto;
+.proof-copy h3 {
+  margin-top: 0;
 }
 
-.proof-panel p:last-child {
+.proof-copy p:last-child {
   margin: 0.35rem 0 0;
   color: var(--muted);
 }
 
-.proof-panel:hover p:last-child,
-.proof-panel:focus-visible p:last-child {
-  color: var(--dim);
+.frame {
+  position: relative;
+  border: 1px solid var(--ink);
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+}
+
+.frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--signal);
+  border-left: 2px solid var(--signal);
+}
+
+.frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--signal);
+  border-bottom: 2px solid var(--signal);
 }
 
 .hire-row {
@@ -438,7 +498,7 @@ a {
   font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
-  color: var(--signal);
+  color: var(--muted);
 }
 
 .band {
@@ -472,7 +532,7 @@ a {
 .page-hero .mono,
 .page-intro .eyebrow,
 .page-intro .mono {
-  color: var(--signal);
+  color: var(--dim);
 }
 
 .page-hero p:not(.mono):not(.price) {
@@ -522,9 +582,17 @@ a {
 
 .links a,
 .page-intro a,
-.mail {
-  color: var(--signal);
+.mail,
+.text-link {
+  color: inherit;
   font-weight: 700;
+  text-underline-offset: 0.18em;
+}
+
+.opening .text-link,
+.site-footer .mail,
+.page-hero a {
+  color: var(--paper);
 }
 
 .offer + .offer,
@@ -556,6 +624,7 @@ a {
   gap: 1.15rem;
   max-width: 36rem;
   margin-top: 1.5rem;
+  padding: 1.35rem 1.35rem 1.5rem;
 }
 
 .field {
@@ -599,12 +668,12 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-bottom-color: var(--signal);
+  border-bottom-color: var(--ink);
 }
 
 .awaiting {
   background: var(--paper-2);
-  border-left: 3px solid var(--signal);
+  border-left: 2px solid var(--signal);
   padding: 0.65rem 0.85rem;
   font-family: var(--mono);
   font-size: 0.9rem;
@@ -721,10 +790,52 @@ textarea:focus {
 .footer-nav a {
   color: var(--paper);
   text-decoration: none;
+  transition: opacity var(--ease);
 }
 
 .footer-nav a:hover {
-  color: var(--signal);
+  opacity: 0.7;
+}
+
+.section-ink {
+  background: var(--ink);
+  color: var(--paper);
+  border-top-color: var(--line-dark);
+}
+
+.section-ink .hire-row {
+  border-top-color: var(--line-dark);
+}
+
+.section-ink .hire-row:last-child {
+  border-bottom-color: var(--line-dark);
+}
+
+.page-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.page-ink .section {
+  border-top-color: var(--line-dark);
+}
+
+.page-ink .offer + .offer,
+.page-ink .faq-item + .faq-item {
+  border-top-color: var(--line-dark);
+}
+
+.page-ink .awaiting {
+  background: #1c1c18;
+  color: var(--dim);
+}
+
+.page-ink .proof-panel {
+  color: var(--ink);
+}
+
+.page-ink .band {
+  border-top: 1px solid var(--line-dark);
 }
 
 .mail {
@@ -743,10 +854,15 @@ textarea:focus {
   }
 
   .opening {
-    padding-top: 2.25rem;
+    min-height: auto;
+    padding: 2.5rem 0 2.25rem;
   }
 
-  .proof-panel {
+  .opening h1 {
+    font-size: clamp(2.6rem, 14vw, 4.2rem);
+  }
+
+  .proof-copy {
     min-height: 0;
   }
 
@@ -758,6 +874,10 @@ textarea:focus {
     width: 100%;
     justify-content: space-between;
   }
+
+  .lockup {
+    max-width: 16rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -765,18 +885,11 @@ textarea:focus {
     scroll-behavior: auto;
   }
 
-  .signal-fill-create,
-  .signal-fill-publish,
-  .signal-fill-evolve {
+  .hero-fade {
     animation: none;
   }
 
-  .signal-fill-create {
-    width: 50%;
-  }
-
-  .signal-fill-publish,
-  .signal-fill-evolve {
-    width: 100%;
+  .proof-panel {
+    transition: none;
   }
 }

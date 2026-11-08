@@ -22,12 +22,12 @@ const thanksUrl = siteUrl ? `${siteUrl}/thanks/` : "/thanks/";
     {heading && <h2>{heading}</h2>}
     {intro && <p class="measure">{intro}</p>}
     <form
-      class="form"
+      class="form frame"
       action={`https://formsubmit.co/${email}`}
       method="POST"
       data-inquiry
     >
-      <input type="hidden" name="_subject" value="Evolve Media inquiry" />
+      <input type="hidden" name="_subject" value="Kindling Works inquiry" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value={thanksUrl} />
@@ -133,7 +133,7 @@ const thanksUrl = siteUrl ? `${siteUrl}/thanks/` : "/thanks/";
             reach: data.get("reach"),
             result90: data.get("result90"),
             budget: data.get("budget"),
-            _subject: `Evolve Media inquiry from ${name}`,
+            _subject: `Kindling Works inquiry from ${name}`,
             _template: "table",
             _captcha: "false",
           }),

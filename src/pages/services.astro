@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import { aiHelp, faqs, notAFit, offers, pageMeta, pending, price, stories } from "../data/site";
 ---
 
-<Base title={pageMeta.services.title} description={pageMeta.services.description}>
+<Base title={pageMeta.services.title} description={pageMeta.services.description} ink>
   <header class="page-hero">
     <div class="wrap">
       <p class="mono">Services</p>
@@ -72,11 +72,16 @@ import { aiHelp, faqs, notAFit, offers, pageMeta, pending, price, stories } from
       <div class="proof">
         {
           stories.map((story) => (
-            <a class="proof-panel" href={`/work#${story.id}`}>
-              <p class="mono">{story.industry}</p>
-              <p class="figure figure-line">{story.title}</p>
-              <h3>{story.client}</h3>
-              <p>{story.summary}</p>
+            <a class="proof-panel frame" href={`/work#${story.id}`}>
+              <div class="proof-crop">
+                <img src={story.crop.src} alt={story.crop.alt} width="1440" height="900" />
+              </div>
+              <div class="proof-copy">
+                <p class="mono">{story.industry}</p>
+                <h3>{story.client}</h3>
+                <p class="figure figure-line">{story.title}</p>
+                <p>{story.summary}</p>
+              </div>
             </a>
           ))
         }

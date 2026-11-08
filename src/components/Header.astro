@@ -1,5 +1,6 @@
 ---
-import { name, nav } from "../data/site";
+import Lockup from "./Lockup.astro";
+import { nav } from "../data/site";
 
 const pathname = Astro.url.pathname;
 const current = (href: string) =>
@@ -8,7 +9,7 @@ const current = (href: string) =>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="logo" href="/">{name}</a>
+    <Lockup href="/" />
     <nav class="nav" aria-label="Primary">
       {
         nav.map((item) => (

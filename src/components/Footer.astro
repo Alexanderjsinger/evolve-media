@@ -1,4 +1,5 @@
 ---
+import Lockup from "./Lockup.astro";
 import {
   email,
   fullName,
@@ -7,16 +8,13 @@ import {
   locationLine,
   name,
   nav,
-  positioning,
 } from "../data/site";
 ---
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div>
-      <p class="logo">{name}</p>
-      <p class="muted">{fullName}</p>
-      <p class="muted">{positioning}</p>
+      <Lockup />
       <p class="muted">{locationLine}</p>
       <p class="fine">© {new Date().getFullYear()} {name}. {fullName}.</p>
     </div>

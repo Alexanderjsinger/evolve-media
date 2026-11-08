@@ -38,7 +38,7 @@ const jsonLd: Record<string, unknown> = {
 
 <Base title={pageMeta.home.title} description={pageMeta.home.description} jsonLd={jsonLd}>
   <section class="opening">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-grid hero-fade">
       <div>
         <p class="positioning">{positioning}</p>
         <h1>{headline}</h1>
@@ -58,16 +58,16 @@ const jsonLd: Record<string, unknown> = {
         <span class="signal-seg"><span class="signal-fill signal-fill-plan"></span></span>
         <span class="signal-seg"><span class="signal-fill signal-fill-create"></span></span>
         <span class="signal-seg"><span class="signal-fill signal-fill-publish"></span></span>
-        <span class="signal-seg"><span class="signal-fill signal-fill-evolve"></span></span>
+        <span class="signal-seg"><span class="signal-fill signal-fill-keep"></span></span>
       </div>
       <ol class="cycle">
         {
           stages.map((stage) => (
             <li class={`cycle-${stage.id}`}>
-              <span class="mark" aria-hidden="true">
-                <span></span>
-              </span>
-              <p class="mono">{stage.label}</p>
+              <p class="mono">
+                <span class="stage-num">{stage.num}</span>
+                {stage.label}
+              </p>
               <p>{stage.body}</p>
             </li>
           ))
@@ -86,11 +86,16 @@ const jsonLd: Record<string, unknown> = {
       <div class="proof">
         {
           stories.map((story) => (
-            <a class="proof-panel" href={`/work#${story.id}`}>
-              <p class="mono">{story.industry}</p>
-              <p class="figure figure-line">{story.title}</p>
-              <h3>{story.client}</h3>
-              <p>{story.summary}</p>
+            <a class="proof-panel frame" href={`/work#${story.id}`}>
+              <div class="proof-crop">
+                <img src={story.crop.src} alt={story.crop.alt} width="1440" height="900" />
+              </div>
+              <div class="proof-copy">
+                <p class="mono">{story.industry}</p>
+                <h3>{story.client}</h3>
+                <p class="figure figure-line">{story.title}</p>
+                <p>{story.summary}</p>
+              </div>
             </a>
           ))
         }
@@ -98,7 +103,7 @@ const jsonLd: Record<string, unknown> = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-ink">
     <div class="wrap">
       <h2>What a hire includes</h2>
       <div class="hire">
